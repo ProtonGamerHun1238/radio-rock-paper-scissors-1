@@ -1,11 +1,37 @@
 enum RadioMessage {
     message1 = 49434,
-    novekszikpont = 60749
+    novekszikpont = 60749,
+    youwin = 7546
 }
 input.onButtonPressed(Button.A, function () {
     radio.sendValue("ko", 1)
     sendedko = 1
     basic.pause(1000)
+})
+radio.onReceivedMessage(RadioMessage.youwin, function () {
+    for (let index = 0; index < 2; index++) {
+        basic.showString("You Won")
+    }
+    for (let index = 0; index < 10000; index++) {
+        if (input.buttonIsPressed(Button.A)) {
+            basic.pause(2000)
+            if (input.buttonIsPressed(Button.A)) {
+                basic.pause(2000)
+                if (input.buttonIsPressed(Button.B)) {
+                    basic.pause(2000)
+                    if (input.buttonIsPressed(Button.B)) {
+                        basic.pause(2000)
+                        if (input.buttonIsPressed(Button.AB)) {
+                            basic.pause(2000)
+                            if (input.buttonIsPressed(Button.AB)) {
+                                control.reset()
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 })
 input.onButtonPressed(Button.AB, function () {
     radio.sendValue("ollo", 1)
@@ -21,7 +47,7 @@ radio.onReceivedValue(function (name, value) {
     if (name == "papir") {
         if (value == 1) {
             if (sendedpapir == 1) {
-                radio.sendValue("ellenfelpont", pontszamlocal)
+                radio.sendString("" + (pontszamlocal))
                 sendedpapir = 0
             }
         }
@@ -30,7 +56,7 @@ radio.onReceivedValue(function (name, value) {
         if (value == 1) {
             if (sendedko == 1) {
                 radio.sendMessage(RadioMessage.novekszikpont)
-                radio.sendValue("ellenfelpont", pontszamlocal)
+                radio.sendString("" + (pontszamlocal))
                 sendedko = 0
             }
         }
@@ -39,7 +65,7 @@ radio.onReceivedValue(function (name, value) {
         if (value == 1) {
             if (sendedollo == 1) {
                 pontszamlocal += 1
-                radio.sendValue("ellenfelpont", pontszamlocal)
+                radio.sendString("" + (pontszamlocal))
                 sendedollo = 0
             }
         }
@@ -47,7 +73,7 @@ radio.onReceivedValue(function (name, value) {
     if (name == "ko") {
         if (value == 1) {
             if (sendedko == 1) {
-                radio.sendValue("ellenfelpont", pontszamlocal)
+                radio.sendString("" + (pontszamlocal))
                 ko = 0
             }
         }
@@ -56,7 +82,7 @@ radio.onReceivedValue(function (name, value) {
         if (value == 1) {
             if (sendedollo == 1) {
                 radio.sendMessage(RadioMessage.novekszikpont)
-                radio.sendValue("ellenfelpont", pontszamlocal)
+                radio.sendString("" + (pontszamlocal))
                 sendedollo = 0
             }
         }
@@ -65,7 +91,7 @@ radio.onReceivedValue(function (name, value) {
         if (value == 1) {
             if (sendedpapir == 1) {
                 pontszamlocal += 1
-                radio.sendValue("ellenfelpont", pontszamlocal)
+                radio.sendString("" + (pontszamlocal))
                 sendedpapir = 0
             }
         }
@@ -73,7 +99,7 @@ radio.onReceivedValue(function (name, value) {
     if (name == "ollo") {
         if (value == 1) {
             if (sendedollo == 1) {
-                radio.sendValue("ellenfelpont", pontszamlocal)
+                radio.sendString("" + (pontszamlocal))
                 sendedollo = 0
             }
         }
@@ -82,7 +108,7 @@ radio.onReceivedValue(function (name, value) {
         if (value == 1) {
             if (sendedpapir == 1) {
                 radio.sendMessage(RadioMessage.novekszikpont)
-                radio.sendValue("ellenfelpont", pontszamlocal)
+                radio.sendString("" + (pontszamlocal))
                 sendedpapir = 0
             }
         }
@@ -91,7 +117,7 @@ radio.onReceivedValue(function (name, value) {
         if (value == 1) {
             if (sendedko == 1) {
                 pontszamlocal += 1
-                radio.sendValue("ellenfelpont", pontszamlocal)
+                radio.sendString("" + (pontszamlocal))
                 sendedko = 0
             }
         }
@@ -110,13 +136,34 @@ let sendedollo = 0
 let sendedko = 0
 radio.setGroup(183)
 basic.forever(function () {
-    let ellenfelpont = 0
-    if (ellenfelpont == 5) {
-        for (let index = 0; index < 1000; index++) {
-            gameover()
-        }
-    }
+	
 })
 basic.forever(function () {
-	
+    let ellenfelpont = 0
+    if (ellenfelpont == 2) {
+        for (let index = 0; index < 10; index++) {
+            radio.sendMessage(RadioMessage.youwin)
+            gameover()
+        }
+        for (let index = 0; index < 10000; index++) {
+            if (input.buttonIsPressed(Button.A)) {
+                basic.pause(2000)
+                if (input.buttonIsPressed(Button.A)) {
+                    basic.pause(2000)
+                    if (input.buttonIsPressed(Button.B)) {
+                        basic.pause(2000)
+                        if (input.buttonIsPressed(Button.B)) {
+                            basic.pause(2000)
+                            if (input.buttonIsPressed(Button.AB)) {
+                                basic.pause(2000)
+                                if (input.buttonIsPressed(Button.AB)) {
+                                    control.reset()
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 })
