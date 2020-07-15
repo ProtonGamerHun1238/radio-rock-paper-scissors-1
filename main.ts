@@ -38,6 +38,9 @@ input.onButtonPressed(Button.AB, function () {
     sendedollo = 1
     basic.pause(1000)
 })
+radio.onReceivedString(function (receivedString) {
+    ellenfelpont = receivedString
+})
 input.onButtonPressed(Button.B, function () {
     radio.sendValue("papir", 1)
     sendedpapir = 1
@@ -132,6 +135,7 @@ function gameover () {
 let ko = 0
 let pontszamlocal = 0
 let sendedpapir = 0
+let ellenfelpont = ""
 let sendedollo = 0
 let sendedko = 0
 radio.setGroup(183)
@@ -139,7 +143,6 @@ basic.forever(function () {
 	
 })
 basic.forever(function () {
-    let ellenfelpont = 0
     if (ellenfelpont == 2) {
         for (let index = 0; index < 10; index++) {
             radio.sendMessage(RadioMessage.youwin)
