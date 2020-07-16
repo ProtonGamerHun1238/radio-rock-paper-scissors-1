@@ -50,6 +50,13 @@ radio.onReceivedValue(function (name, value) {
     if (name == "papir") {
         if (value == 1) {
             if (sendedpapir == 1) {
+                basic.showLeds(`
+                    # # # # #
+                    # # # # #
+                    # # # # #
+                    # # # # #
+                    # # # # #
+                    `)
                 radio.sendString("" + (pontszamlocal))
                 sendedpapir = 0
             }
@@ -58,6 +65,13 @@ radio.onReceivedValue(function (name, value) {
     if (name == "papir") {
         if (value == 1) {
             if (sendedko == 1) {
+                basic.showLeds(`
+                    . . . . .
+                    . . . . .
+                    . # # # #
+                    # # # # #
+                    # # # # #
+                    `)
                 radio.sendMessage(RadioMessage.novekszikpont)
                 radio.sendString("" + (pontszamlocal))
                 sendedko = 0
@@ -67,6 +81,13 @@ radio.onReceivedValue(function (name, value) {
     if (name == "papir") {
         if (value == 1) {
             if (sendedollo == 1) {
+                basic.showLeds(`
+                    # . . . #
+                    . # . # .
+                    . . # . .
+                    # # . # #
+                    # # . # #
+                    `)
                 pontszamlocal += 1
                 radio.sendString("" + (pontszamlocal))
                 sendedollo = 0
