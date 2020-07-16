@@ -143,7 +143,7 @@ basic.forever(function () {
 	
 })
 basic.forever(function () {
-    if (ellenfelpont == 2) {
+    if (ellenfelpont == "5") {
         for (let index = 0; index < 10; index++) {
             radio.sendMessage(RadioMessage.youwin)
             gameover()
