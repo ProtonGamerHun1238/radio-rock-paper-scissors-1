@@ -66,9 +66,9 @@ radio.onReceivedValue(function (name, value) {
         if (value == 1) {
             if (sendedko == 1) {
                 basic.showLeds(`
-                    . . . . .
-                    . . . . .
-                    . # # # #
+                    # # # # #
+                    # # # # #
+                    # # # # #
                     # # # # #
                     # # # # #
                     `)
@@ -82,11 +82,11 @@ radio.onReceivedValue(function (name, value) {
         if (value == 1) {
             if (sendedollo == 1) {
                 basic.showLeds(`
-                    # . . . #
-                    . # . # .
-                    . . # . .
-                    # # . # #
-                    # # . # #
+                    # # # # #
+                    # # # # #
+                    # # # # #
+                    # # # # #
+                    # # # # #
                     `)
                 pontszamlocal += 1
                 radio.sendString("" + (pontszamlocal))
@@ -97,6 +97,7 @@ radio.onReceivedValue(function (name, value) {
     if (name == "ko") {
         if (value == 1) {
             if (sendedko == 1) {
+                basic.showIcon(IconNames.SmallSquare)
                 radio.sendString("" + (pontszamlocal))
                 ko = 0
             }
@@ -105,6 +106,7 @@ radio.onReceivedValue(function (name, value) {
     if (name == "ko") {
         if (value == 1) {
             if (sendedollo == 1) {
+                basic.showIcon(IconNames.SmallSquare)
                 radio.sendMessage(RadioMessage.novekszikpont)
                 radio.sendString("" + (pontszamlocal))
                 sendedollo = 0
@@ -114,6 +116,7 @@ radio.onReceivedValue(function (name, value) {
     if (name == "ko") {
         if (value == 1) {
             if (sendedpapir == 1) {
+                basic.showIcon(IconNames.SmallSquare)
                 pontszamlocal += 1
                 radio.sendString("" + (pontszamlocal))
                 sendedpapir = 0
@@ -123,6 +126,7 @@ radio.onReceivedValue(function (name, value) {
     if (name == "ollo") {
         if (value == 1) {
             if (sendedollo == 1) {
+                basic.showIcon(IconNames.Scissors)
                 radio.sendString("" + (pontszamlocal))
                 sendedollo = 0
             }
@@ -131,6 +135,7 @@ radio.onReceivedValue(function (name, value) {
     if (name == "ollo") {
         if (value == 1) {
             if (sendedpapir == 1) {
+                basic.showIcon(IconNames.Scissors)
                 radio.sendMessage(RadioMessage.novekszikpont)
                 radio.sendString("" + (pontszamlocal))
                 sendedpapir = 0
@@ -140,6 +145,7 @@ radio.onReceivedValue(function (name, value) {
     if (name == "ollo") {
         if (value == 1) {
             if (sendedko == 1) {
+                basic.showIcon(IconNames.Scissors)
                 pontszamlocal += 1
                 radio.sendString("" + (pontszamlocal))
                 sendedko = 0
